@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9f0190b3608e41b2aa4ef25139ac5b77" Name="Diagram1">
+        <EntityTypeShape EntityType="ProjeITModel.AileMedikalGecmisi" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeITModel.DonorMedikalGecmisi" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeITModel.EkBilgiler" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeITModel.GirisSayfasi" Width="1.5" PointX="6.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeITModel.HastaBilgileri" Width="1.5" PointX="0.75" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeITModel.ImmunhistokimyaTestiDurumu" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeITModel.İlaclar" Width="1.5" PointX="3" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeITModel.JinekolojikGecmis" Width="1.5" PointX="3" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeITModel.KanserTedavisi" Width="1.5" PointX="3" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeITModel.MetastazDurumu" Width="1.5" PointX="3" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeITModel.Notlar" Width="1.5" PointX="3" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeITModel.NumuneToplamaBilgileri" Width="1.5" PointX="3" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeITModel.OperasyonProseduru" Width="1.5" PointX="3" PointY="36" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeITModel.PatolojiDurummu" Width="1.5" PointX="3" PointY="38.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeITModel.PersonelListesi" Width="1.5" PointX="4.5" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeITModel.SosyalYasamOzellikleri" Width="1.5" PointX="3" PointY="41.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeITModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeITModel.TaniBilgileri" Width="1.5" PointX="3" PointY="47" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeITModel.TumorDurumu" Width="1.5" PointX="3" PointY="50" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjeITModel.ViralEnfeksiyonlar" Width="1.5" PointX="3" PointY="53.25" IsExpanded="true" />
+        <AssociationConnector Association="ProjeITModel.FK_AileMedikalGecmisi_HastaBilgileri" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeITModel.FK_DonorMedikalGecmisi_HastaBilgileri" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeITModel.FK_EkBilgiler_HastaBilgileri" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeITModel.FK_GirisSayfasi_PersonelListesi1" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeITModel.FK_ImmunhistokimyaTestiDurumu_HastaBilgileri" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeITModel.FK_İlaclar_HastaBilgileri" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeITModel.FK_JinekolojikGecmis_HastaBilgileri" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeITModel.FK_KanserTedavisi_HastaBilgileri" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeITModel.FK_MetastazDurumu_HastaBilgileri" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeITModel.FK_Notlar_HastaBilgileri" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeITModel.FK_NumuneToplamaBilgileri_HastaBilgileri" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeITModel.FK_OperasyonProseduru_HastaBilgileri" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeITModel.FK_PatolojiDurummu_HastaBilgileri" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeITModel.FK_SosyalYasamOzellikleri_HastaBilgileri" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeITModel.FK_TaniBilgileri_HastaBilgileri" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeITModel.FK_TumorDurumu_HastaBilgileri" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjeITModel.FK_ViralEnfeksiyonlar_HastaBilgileri" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ProjeITModel.TumTablolar" Width="1.5" PointX="5.375" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

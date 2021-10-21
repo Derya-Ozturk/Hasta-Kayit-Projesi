@@ -1,0 +1,37 @@
+﻿@using OnlineCRF_ProjeIT.DAL
+@model List<OnlineCRF_ProjeIT.DAL.TumTablolar>
+@{
+    ViewBag.Title = "GetTables";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<br />
+<form style="align-content:center">
+    <div class="container">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Personel_ID</th>
+                    <th>Hasta_No</th>
+                    <th>Güncelle</th>
+                    <th>Sil</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>@x.Personel_ID</td>
+                        <td>@x.Hasta_ID</td>
+                        <td><a href="/Goruntuleme/UpdateTables/@x.Hasta_ID" class="btn btn-success">Görüntüle</a></td>
+                        <td><a href="/Goruntuleme/Delete/@x.Hasta_ID" class="btn btn-danger">Sil</a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+</form>
+

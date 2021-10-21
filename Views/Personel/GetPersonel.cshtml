@@ -1,0 +1,51 @@
+﻿@*@using OnlineCRF_ProjeIT.DAL*@
+@model List<OnlineCRF_ProjeIT.DAL.PersonelListesi>
+@{
+    ViewBag.Title = "GetPersonel";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+
+<h2>Personel Listesi</h2>
+<br />
+@using (Html.BeginForm("UpdateTables", "Goruntuleme", FormMethod.Post))
+{
+    <form style="align-content:center">
+        <div class="form-group">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Personel ID</th>
+                        <th>Personel Ad</th>
+                        <th>Personel Soyad</th>
+                        <th>Departman</th>
+                        <th>Yetki Durum</th>
+                        <th>Yetki Güncelleme</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model)
+                    {
+                        <tr>
+                            <td>@x.Personel_ID</td>
+                            <td>@x.Personel_Ad</td>
+                            <td>@x.Personel_Soyad</td>
+                            <td>@x.Departman</td>
+                            <td>@x.Yetki</td>
+                            @*@Html.DropDownListFor(x => x.Personel_ID, (List<SelectListItem>)ViewBag.yetki, new
+                                {@class = "form-control" })*@
+                            <td>
+                                <select id="options">
+                                    <option selected disabled>Seçiniz</option>
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </td>
+                            <td><a href="/Personel/GetPersonel/@x.Personel_ID" class="btn btn-success">Güncelle</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </form>
+}

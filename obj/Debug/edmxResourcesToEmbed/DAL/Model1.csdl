@@ -1,0 +1,672 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjeITModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AileMedikalGecmisi">
+    <Key>
+      <PropertyRef Name="AileMedikal_ID" />
+    </Key>
+    <Property Name="AileMedikal_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Yakinlik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tani" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TaniYili" Type="Int32" />
+    <Property Name="Hasta_ID" Type="Int32" />
+    <NavigationProperty Name="HastaBilgileri" Relationship="Self.FK_AileMedikalGecmisi_HastaBilgileri" FromRole="AileMedikalGecmisi" ToRole="HastaBilgileri" />
+  </EntityType>
+  <EntityType Name="DonorMedikalGecmisi">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HastalikTedavi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TaniTarihi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Durumu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ICD10Kodu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Hasta_ID" Type="Int32" />
+    <NavigationProperty Name="HastaBilgileri" Relationship="Self.FK_DonorMedikalGecmisi_HastaBilgileri" FromRole="DonorMedikalGecmisi" ToRole="HastaBilgileri" />
+  </EntityType>
+  <EntityType Name="EkBilgiler">
+    <Key>
+      <PropertyRef Name="Bilgi_ID" />
+    </Key>
+    <Property Name="Bilgi_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EkIslemler" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Hasta_ID" Type="Int32" />
+    <NavigationProperty Name="HastaBilgileri" Relationship="Self.FK_EkBilgiler_HastaBilgileri" FromRole="EkBilgiler" ToRole="HastaBilgileri" />
+  </EntityType>
+  <EntityType Name="GirisSayfasi">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kullanici_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Personel_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PersonelListesi" Relationship="Self.FK_GirisSayfasi_PersonelListesi1" FromRole="GirisSayfasi" ToRole="PersonelListesi" />
+  </EntityType>
+  <EntityType Name="HastaBilgileri">
+    <Key>
+      <PropertyRef Name="Hasta_ID" />
+    </Key>
+    <Property Name="Hasta_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DogumTarihi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Cinsiyet" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Ulke" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EtnikKoken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Boy" Type="Int32" />
+    <Property Name="Kilo" Type="Int32" />
+    <Property Name="EgitimSeviyesi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AileMedikalGecmisi" Relationship="Self.FK_AileMedikalGecmisi_HastaBilgileri" FromRole="HastaBilgileri" ToRole="AileMedikalGecmisi" />
+    <NavigationProperty Name="DonorMedikalGecmisi" Relationship="Self.FK_DonorMedikalGecmisi_HastaBilgileri" FromRole="HastaBilgileri" ToRole="DonorMedikalGecmisi" />
+    <NavigationProperty Name="EkBilgiler" Relationship="Self.FK_EkBilgiler_HastaBilgileri" FromRole="HastaBilgileri" ToRole="EkBilgiler" />
+    <NavigationProperty Name="ImmunhistokimyaTestiDurumu" Relationship="Self.FK_ImmunhistokimyaTestiDurumu_HastaBilgileri" FromRole="HastaBilgileri" ToRole="ImmunhistokimyaTestiDurumu" />
+    <NavigationProperty Name="İlaclar" Relationship="Self.FK_İlaclar_HastaBilgileri" FromRole="HastaBilgileri" ToRole="İlaclar" />
+    <NavigationProperty Name="JinekolojikGecmis" Relationship="Self.FK_JinekolojikGecmis_HastaBilgileri" FromRole="HastaBilgileri" ToRole="JinekolojikGecmis" />
+    <NavigationProperty Name="KanserTedavisi" Relationship="Self.FK_KanserTedavisi_HastaBilgileri" FromRole="HastaBilgileri" ToRole="KanserTedavisi" />
+    <NavigationProperty Name="MetastazDurumu" Relationship="Self.FK_MetastazDurumu_HastaBilgileri" FromRole="HastaBilgileri" ToRole="MetastazDurumu" />
+    <NavigationProperty Name="Notlar" Relationship="Self.FK_Notlar_HastaBilgileri" FromRole="HastaBilgileri" ToRole="Notlar" />
+    <NavigationProperty Name="NumuneToplamaBilgileri" Relationship="Self.FK_NumuneToplamaBilgileri_HastaBilgileri" FromRole="HastaBilgileri" ToRole="NumuneToplamaBilgileri" />
+    <NavigationProperty Name="OperasyonProseduru" Relationship="Self.FK_OperasyonProseduru_HastaBilgileri" FromRole="HastaBilgileri" ToRole="OperasyonProseduru" />
+    <NavigationProperty Name="PatolojiDurummu" Relationship="Self.FK_PatolojiDurummu_HastaBilgileri" FromRole="HastaBilgileri" ToRole="PatolojiDurummu" />
+    <NavigationProperty Name="SosyalYasamOzellikleri" Relationship="Self.FK_SosyalYasamOzellikleri_HastaBilgileri" FromRole="HastaBilgileri" ToRole="SosyalYasamOzellikleri" />
+    <NavigationProperty Name="TaniBilgileri" Relationship="Self.FK_TaniBilgileri_HastaBilgileri" FromRole="HastaBilgileri" ToRole="TaniBilgileri" />
+    <NavigationProperty Name="TumorDurumu" Relationship="Self.FK_TumorDurumu_HastaBilgileri" FromRole="HastaBilgileri" ToRole="TumorDurumu" />
+    <NavigationProperty Name="ViralEnfeksiyonlar" Relationship="Self.FK_ViralEnfeksiyonlar_HastaBilgileri" FromRole="HastaBilgileri" ToRole="ViralEnfeksiyonlar" />
+  </EntityType>
+  <EntityType Name="ImmunhistokimyaTestiDurumu">
+    <Key>
+      <PropertyRef Name="TestDurumu_ID" />
+    </Key>
+    <Property Name="TestDurumu_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ERTestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ERSonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PRTestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PRSonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HER2TestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="HER2Sonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MLH1TestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MLH1Sonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PMS2TestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PMS2Sonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MSH2TestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MSH2Sonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MSH6TestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MSH6Sonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Hasta_ID" Type="Int32" />
+    <NavigationProperty Name="HastaBilgileri" Relationship="Self.FK_ImmunhistokimyaTestiDurumu_HastaBilgileri" FromRole="ImmunhistokimyaTestiDurumu" ToRole="HastaBilgileri" />
+  </EntityType>
+  <EntityType Name="İlaclar">
+    <Key>
+      <PropertyRef Name="İlac_ID" />
+    </Key>
+    <Property Name="İlac_ID" Type="Int32" Nullable="false" />
+    <Property Name="İlac" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Doz" Type="Byte" />
+    <Property Name="Birim" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="KullanimSekli" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Siklik" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MevcutDurum" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Hasta_ID" Type="Int32" />
+    <NavigationProperty Name="HastaBilgileri" Relationship="Self.FK_İlaclar_HastaBilgileri" FromRole="İlaclar" ToRole="HastaBilgileri" />
+  </EntityType>
+  <EntityType Name="JinekolojikGecmis">
+    <Key>
+      <PropertyRef Name="Jinekoloji_ID" />
+    </Key>
+    <Property Name="Jinekoloji_ID" Type="Int32" Nullable="false" />
+    <Property Name="MenstrualDurum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SonReglTarihi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Hamilelik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Dogum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Hasta_ID" Type="Int32" />
+    <NavigationProperty Name="HastaBilgileri" Relationship="Self.FK_JinekolojikGecmis_HastaBilgileri" FromRole="JinekolojikGecmis" ToRole="HastaBilgileri" />
+  </EntityType>
+  <EntityType Name="KanserTedavisi">
+    <Key>
+      <PropertyRef Name="KanserTedavi_ID" />
+    </Key>
+    <Property Name="KanserTedavi_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TedaviTipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TedaviBaslangicBitis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TedaviSonucu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TedaviUygulamaSekli" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Hasta_ID" Type="Int32" />
+    <NavigationProperty Name="HastaBilgileri" Relationship="Self.FK_KanserTedavisi_HastaBilgileri" FromRole="KanserTedavisi" ToRole="HastaBilgileri" />
+  </EntityType>
+  <EntityType Name="MetastazDurumu">
+    <Key>
+      <PropertyRef Name="Metastaz_ID" />
+    </Key>
+    <Property Name="Metastaz_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MetastazOrgani" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="LenfNoduIslemi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="LenfNoduMetastazi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="LenfNoduLokasyon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="UzakMetastaz" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="UzakMetastazLokasyon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Hasta_ID" Type="Int32" />
+    <NavigationProperty Name="HastaBilgileri" Relationship="Self.FK_MetastazDurumu_HastaBilgileri" FromRole="MetastazDurumu" ToRole="HastaBilgileri" />
+  </EntityType>
+  <EntityType Name="Notlar">
+    <Key>
+      <PropertyRef Name="Not_ID" />
+    </Key>
+    <Property Name="Not_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Notlar1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Hasta_ID" Type="Int32" />
+    <NavigationProperty Name="HastaBilgileri" Relationship="Self.FK_Notlar_HastaBilgileri" FromRole="Notlar" ToRole="HastaBilgileri" />
+  </EntityType>
+  <EntityType Name="NumuneToplamaBilgileri">
+    <Key>
+      <PropertyRef Name="Numune_ID" />
+    </Key>
+    <Property Name="Numune_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ToplamaTarihi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ToplamaSaati" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="AnatomikBolge" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ToplamaSekli" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Hasta_ID" Type="Int32" />
+    <NavigationProperty Name="HastaBilgileri" Relationship="Self.FK_NumuneToplamaBilgileri_HastaBilgileri" FromRole="NumuneToplamaBilgileri" ToRole="HastaBilgileri" />
+  </EntityType>
+  <EntityType Name="OperasyonProseduru">
+    <Key>
+      <PropertyRef Name="Operasyon_ID" />
+    </Key>
+    <Property Name="Operasyon_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OperasyonProseduru1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Hasta_ID" Type="Int32" />
+    <NavigationProperty Name="HastaBilgileri" Relationship="Self.FK_OperasyonProseduru_HastaBilgileri" FromRole="OperasyonProseduru" ToRole="HastaBilgileri" />
+  </EntityType>
+  <EntityType Name="PatolojiDurummu">
+    <Key>
+      <PropertyRef Name="Patoloji_ID" />
+    </Key>
+    <Property Name="Patoloji_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumuneToplamaSekli" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MikroskopikAnaliz" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PatolojikTani" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Hasta_ID" Type="Int32" />
+    <NavigationProperty Name="HastaBilgileri" Relationship="Self.FK_PatolojiDurummu_HastaBilgileri" FromRole="PatolojiDurummu" ToRole="HastaBilgileri" />
+  </EntityType>
+  <EntityType Name="PersonelListesi">
+    <Key>
+      <PropertyRef Name="Personel_ID" />
+    </Key>
+    <Property Name="Personel_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Personel_Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Personel_Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Departman" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Yetki" Type="Boolean" />
+    <NavigationProperty Name="GirisSayfasi" Relationship="Self.FK_GirisSayfasi_PersonelListesi1" FromRole="PersonelListesi" ToRole="GirisSayfasi" />
+  </EntityType>
+  <EntityType Name="SosyalYasamOzellikleri">
+    <Key>
+      <PropertyRef Name="SosyalYasamID" />
+    </Key>
+    <Property Name="SosyalYasamID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Meslek" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CevreselMaruziyet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SigaraDurum" Type="Boolean" />
+    <Property Name="SigaraTip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="SigaraMiktar" Type="Int32" />
+    <Property Name="SigaraMevcutDurum" Type="Int32" />
+    <Property Name="SigaraBirakis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AlkolDurum" Type="Boolean" />
+    <Property Name="AlkolTip" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="AlkolMiktar" Type="Int32" />
+    <Property Name="AlkolMevcutDurum" Type="Int32" />
+    <Property Name="AlkolBirakis" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MaddeDurum" Type="Boolean" />
+    <Property Name="MaddeTip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MaddeMiktar" Type="Int32" />
+    <Property Name="MaddeMevcutDurum" Type="Int32" />
+    <Property Name="MaddeBirakis" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Hasta_ID" Type="Int32" />
+    <NavigationProperty Name="HastaBilgileri" Relationship="Self.FK_SosyalYasamOzellikleri_HastaBilgileri" FromRole="SosyalYasamOzellikleri" ToRole="HastaBilgileri" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TaniBilgileri">
+    <Key>
+      <PropertyRef Name="Tani_ID" />
+    </Key>
+    <Property Name="Tani_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaniTarihi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="KlinikTani" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ICD10TaniKodu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Hasta_ID" Type="Int32" />
+    <NavigationProperty Name="HastaBilgileri" Relationship="Self.FK_TaniBilgileri_HastaBilgileri" FromRole="TaniBilgileri" ToRole="HastaBilgileri" />
+  </EntityType>
+  <EntityType Name="TumorDurumu">
+    <Key>
+      <PropertyRef Name="Tumor_ID" />
+    </Key>
+    <Property Name="Tumor_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TumorBolgesi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TumorBoyutu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TNM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Evre" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="TumorTipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Hasta_ID" Type="Int32" />
+    <NavigationProperty Name="HastaBilgileri" Relationship="Self.FK_TumorDurumu_HastaBilgileri" FromRole="TumorDurumu" ToRole="HastaBilgileri" />
+  </EntityType>
+  <EntityType Name="ViralEnfeksiyonlar">
+    <Key>
+      <PropertyRef Name="Viral_ID" />
+    </Key>
+    <Property Name="Viral_ID" Type="Int32" Nullable="false" />
+    <Property Name="HIVTestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="HIVSonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HepATestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="HepASonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HepBTestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="HepBSonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HepCTestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="HepCSonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SifilizTestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SifilizSonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Hasta_ID" Type="Int32" />
+    <NavigationProperty Name="HastaBilgileri" Relationship="Self.FK_ViralEnfeksiyonlar_HastaBilgileri" FromRole="ViralEnfeksiyonlar" ToRole="HastaBilgileri" />
+  </EntityType>
+  <Association Name="FK_AileMedikalGecmisi_HastaBilgileri">
+    <End Role="HastaBilgileri" Type="Self.HastaBilgileri" Multiplicity="0..1" />
+    <End Role="AileMedikalGecmisi" Type="Self.AileMedikalGecmisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HastaBilgileri">
+        <PropertyRef Name="Hasta_ID" />
+      </Principal>
+      <Dependent Role="AileMedikalGecmisi">
+        <PropertyRef Name="Hasta_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DonorMedikalGecmisi_HastaBilgileri">
+    <End Role="HastaBilgileri" Type="Self.HastaBilgileri" Multiplicity="0..1" />
+    <End Role="DonorMedikalGecmisi" Type="Self.DonorMedikalGecmisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HastaBilgileri">
+        <PropertyRef Name="Hasta_ID" />
+      </Principal>
+      <Dependent Role="DonorMedikalGecmisi">
+        <PropertyRef Name="Hasta_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EkBilgiler_HastaBilgileri">
+    <End Role="HastaBilgileri" Type="Self.HastaBilgileri" Multiplicity="0..1" />
+    <End Role="EkBilgiler" Type="Self.EkBilgiler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HastaBilgileri">
+        <PropertyRef Name="Hasta_ID" />
+      </Principal>
+      <Dependent Role="EkBilgiler">
+        <PropertyRef Name="Hasta_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GirisSayfasi_PersonelListesi1">
+    <End Role="PersonelListesi" Type="Self.PersonelListesi" Multiplicity="1" />
+    <End Role="GirisSayfasi" Type="Self.GirisSayfasi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonelListesi">
+        <PropertyRef Name="Personel_ID" />
+      </Principal>
+      <Dependent Role="GirisSayfasi">
+        <PropertyRef Name="Personel_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ImmunhistokimyaTestiDurumu_HastaBilgileri">
+    <End Role="HastaBilgileri" Type="Self.HastaBilgileri" Multiplicity="0..1" />
+    <End Role="ImmunhistokimyaTestiDurumu" Type="Self.ImmunhistokimyaTestiDurumu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HastaBilgileri">
+        <PropertyRef Name="Hasta_ID" />
+      </Principal>
+      <Dependent Role="ImmunhistokimyaTestiDurumu">
+        <PropertyRef Name="Hasta_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_İlaclar_HastaBilgileri">
+    <End Role="HastaBilgileri" Type="Self.HastaBilgileri" Multiplicity="0..1" />
+    <End Role="İlaclar" Type="Self.İlaclar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HastaBilgileri">
+        <PropertyRef Name="Hasta_ID" />
+      </Principal>
+      <Dependent Role="İlaclar">
+        <PropertyRef Name="Hasta_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JinekolojikGecmis_HastaBilgileri">
+    <End Role="HastaBilgileri" Type="Self.HastaBilgileri" Multiplicity="0..1" />
+    <End Role="JinekolojikGecmis" Type="Self.JinekolojikGecmis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HastaBilgileri">
+        <PropertyRef Name="Hasta_ID" />
+      </Principal>
+      <Dependent Role="JinekolojikGecmis">
+        <PropertyRef Name="Hasta_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KanserTedavisi_HastaBilgileri">
+    <End Role="HastaBilgileri" Type="Self.HastaBilgileri" Multiplicity="0..1" />
+    <End Role="KanserTedavisi" Type="Self.KanserTedavisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HastaBilgileri">
+        <PropertyRef Name="Hasta_ID" />
+      </Principal>
+      <Dependent Role="KanserTedavisi">
+        <PropertyRef Name="Hasta_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MetastazDurumu_HastaBilgileri">
+    <End Role="HastaBilgileri" Type="Self.HastaBilgileri" Multiplicity="0..1" />
+    <End Role="MetastazDurumu" Type="Self.MetastazDurumu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HastaBilgileri">
+        <PropertyRef Name="Hasta_ID" />
+      </Principal>
+      <Dependent Role="MetastazDurumu">
+        <PropertyRef Name="Hasta_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notlar_HastaBilgileri">
+    <End Role="HastaBilgileri" Type="Self.HastaBilgileri" Multiplicity="0..1" />
+    <End Role="Notlar" Type="Self.Notlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HastaBilgileri">
+        <PropertyRef Name="Hasta_ID" />
+      </Principal>
+      <Dependent Role="Notlar">
+        <PropertyRef Name="Hasta_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NumuneToplamaBilgileri_HastaBilgileri">
+    <End Role="HastaBilgileri" Type="Self.HastaBilgileri" Multiplicity="0..1" />
+    <End Role="NumuneToplamaBilgileri" Type="Self.NumuneToplamaBilgileri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HastaBilgileri">
+        <PropertyRef Name="Hasta_ID" />
+      </Principal>
+      <Dependent Role="NumuneToplamaBilgileri">
+        <PropertyRef Name="Hasta_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OperasyonProseduru_HastaBilgileri">
+    <End Role="HastaBilgileri" Type="Self.HastaBilgileri" Multiplicity="0..1" />
+    <End Role="OperasyonProseduru" Type="Self.OperasyonProseduru" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HastaBilgileri">
+        <PropertyRef Name="Hasta_ID" />
+      </Principal>
+      <Dependent Role="OperasyonProseduru">
+        <PropertyRef Name="Hasta_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatolojiDurummu_HastaBilgileri">
+    <End Role="HastaBilgileri" Type="Self.HastaBilgileri" Multiplicity="0..1" />
+    <End Role="PatolojiDurummu" Type="Self.PatolojiDurummu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HastaBilgileri">
+        <PropertyRef Name="Hasta_ID" />
+      </Principal>
+      <Dependent Role="PatolojiDurummu">
+        <PropertyRef Name="Hasta_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SosyalYasamOzellikleri_HastaBilgileri">
+    <End Role="HastaBilgileri" Type="Self.HastaBilgileri" Multiplicity="0..1" />
+    <End Role="SosyalYasamOzellikleri" Type="Self.SosyalYasamOzellikleri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HastaBilgileri">
+        <PropertyRef Name="Hasta_ID" />
+      </Principal>
+      <Dependent Role="SosyalYasamOzellikleri">
+        <PropertyRef Name="Hasta_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaniBilgileri_HastaBilgileri">
+    <End Role="HastaBilgileri" Type="Self.HastaBilgileri" Multiplicity="0..1" />
+    <End Role="TaniBilgileri" Type="Self.TaniBilgileri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HastaBilgileri">
+        <PropertyRef Name="Hasta_ID" />
+      </Principal>
+      <Dependent Role="TaniBilgileri">
+        <PropertyRef Name="Hasta_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TumorDurumu_HastaBilgileri">
+    <End Role="HastaBilgileri" Type="Self.HastaBilgileri" Multiplicity="0..1" />
+    <End Role="TumorDurumu" Type="Self.TumorDurumu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HastaBilgileri">
+        <PropertyRef Name="Hasta_ID" />
+      </Principal>
+      <Dependent Role="TumorDurumu">
+        <PropertyRef Name="Hasta_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ViralEnfeksiyonlar_HastaBilgileri">
+    <End Role="HastaBilgileri" Type="Self.HastaBilgileri" Multiplicity="0..1" />
+    <End Role="ViralEnfeksiyonlar" Type="Self.ViralEnfeksiyonlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HastaBilgileri">
+        <PropertyRef Name="Hasta_ID" />
+      </Principal>
+      <Dependent Role="ViralEnfeksiyonlar">
+        <PropertyRef Name="Hasta_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjeIT_DBContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AileMedikalGecmisi" EntityType="Self.AileMedikalGecmisi" />
+    <EntitySet Name="DonorMedikalGecmisi" EntityType="Self.DonorMedikalGecmisi" />
+    <EntitySet Name="EkBilgiler" EntityType="Self.EkBilgiler" />
+    <EntitySet Name="GirisSayfasi" EntityType="Self.GirisSayfasi" />
+    <EntitySet Name="HastaBilgileri" EntityType="Self.HastaBilgileri" />
+    <EntitySet Name="ImmunhistokimyaTestiDurumu" EntityType="Self.ImmunhistokimyaTestiDurumu" />
+    <EntitySet Name="İlaclar" EntityType="Self.İlaclar" />
+    <EntitySet Name="JinekolojikGecmis" EntityType="Self.JinekolojikGecmis" />
+    <EntitySet Name="KanserTedavisi" EntityType="Self.KanserTedavisi" />
+    <EntitySet Name="MetastazDurumu" EntityType="Self.MetastazDurumu" />
+    <EntitySet Name="Notlar" EntityType="Self.Notlar" />
+    <EntitySet Name="NumuneToplamaBilgileri" EntityType="Self.NumuneToplamaBilgileri" />
+    <EntitySet Name="OperasyonProseduru" EntityType="Self.OperasyonProseduru" />
+    <EntitySet Name="PatolojiDurummu" EntityType="Self.PatolojiDurummu" />
+    <EntitySet Name="PersonelListesi" EntityType="Self.PersonelListesi" />
+    <EntitySet Name="SosyalYasamOzellikleri" EntityType="Self.SosyalYasamOzellikleri" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TaniBilgileri" EntityType="Self.TaniBilgileri" />
+    <EntitySet Name="TumorDurumu" EntityType="Self.TumorDurumu" />
+    <EntitySet Name="ViralEnfeksiyonlar" EntityType="Self.ViralEnfeksiyonlar" />
+    <AssociationSet Name="FK_AileMedikalGecmisi_HastaBilgileri" Association="Self.FK_AileMedikalGecmisi_HastaBilgileri">
+      <End Role="HastaBilgileri" EntitySet="HastaBilgileri" />
+      <End Role="AileMedikalGecmisi" EntitySet="AileMedikalGecmisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DonorMedikalGecmisi_HastaBilgileri" Association="Self.FK_DonorMedikalGecmisi_HastaBilgileri">
+      <End Role="HastaBilgileri" EntitySet="HastaBilgileri" />
+      <End Role="DonorMedikalGecmisi" EntitySet="DonorMedikalGecmisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EkBilgiler_HastaBilgileri" Association="Self.FK_EkBilgiler_HastaBilgileri">
+      <End Role="HastaBilgileri" EntitySet="HastaBilgileri" />
+      <End Role="EkBilgiler" EntitySet="EkBilgiler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GirisSayfasi_PersonelListesi1" Association="Self.FK_GirisSayfasi_PersonelListesi1">
+      <End Role="PersonelListesi" EntitySet="PersonelListesi" />
+      <End Role="GirisSayfasi" EntitySet="GirisSayfasi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImmunhistokimyaTestiDurumu_HastaBilgileri" Association="Self.FK_ImmunhistokimyaTestiDurumu_HastaBilgileri">
+      <End Role="HastaBilgileri" EntitySet="HastaBilgileri" />
+      <End Role="ImmunhistokimyaTestiDurumu" EntitySet="ImmunhistokimyaTestiDurumu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_İlaclar_HastaBilgileri" Association="Self.FK_İlaclar_HastaBilgileri">
+      <End Role="HastaBilgileri" EntitySet="HastaBilgileri" />
+      <End Role="İlaclar" EntitySet="İlaclar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JinekolojikGecmis_HastaBilgileri" Association="Self.FK_JinekolojikGecmis_HastaBilgileri">
+      <End Role="HastaBilgileri" EntitySet="HastaBilgileri" />
+      <End Role="JinekolojikGecmis" EntitySet="JinekolojikGecmis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KanserTedavisi_HastaBilgileri" Association="Self.FK_KanserTedavisi_HastaBilgileri">
+      <End Role="HastaBilgileri" EntitySet="HastaBilgileri" />
+      <End Role="KanserTedavisi" EntitySet="KanserTedavisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MetastazDurumu_HastaBilgileri" Association="Self.FK_MetastazDurumu_HastaBilgileri">
+      <End Role="HastaBilgileri" EntitySet="HastaBilgileri" />
+      <End Role="MetastazDurumu" EntitySet="MetastazDurumu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notlar_HastaBilgileri" Association="Self.FK_Notlar_HastaBilgileri">
+      <End Role="HastaBilgileri" EntitySet="HastaBilgileri" />
+      <End Role="Notlar" EntitySet="Notlar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NumuneToplamaBilgileri_HastaBilgileri" Association="Self.FK_NumuneToplamaBilgileri_HastaBilgileri">
+      <End Role="HastaBilgileri" EntitySet="HastaBilgileri" />
+      <End Role="NumuneToplamaBilgileri" EntitySet="NumuneToplamaBilgileri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OperasyonProseduru_HastaBilgileri" Association="Self.FK_OperasyonProseduru_HastaBilgileri">
+      <End Role="HastaBilgileri" EntitySet="HastaBilgileri" />
+      <End Role="OperasyonProseduru" EntitySet="OperasyonProseduru" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatolojiDurummu_HastaBilgileri" Association="Self.FK_PatolojiDurummu_HastaBilgileri">
+      <End Role="HastaBilgileri" EntitySet="HastaBilgileri" />
+      <End Role="PatolojiDurummu" EntitySet="PatolojiDurummu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SosyalYasamOzellikleri_HastaBilgileri" Association="Self.FK_SosyalYasamOzellikleri_HastaBilgileri">
+      <End Role="HastaBilgileri" EntitySet="HastaBilgileri" />
+      <End Role="SosyalYasamOzellikleri" EntitySet="SosyalYasamOzellikleri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaniBilgileri_HastaBilgileri" Association="Self.FK_TaniBilgileri_HastaBilgileri">
+      <End Role="HastaBilgileri" EntitySet="HastaBilgileri" />
+      <End Role="TaniBilgileri" EntitySet="TaniBilgileri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TumorDurumu_HastaBilgileri" Association="Self.FK_TumorDurumu_HastaBilgileri">
+      <End Role="HastaBilgileri" EntitySet="HastaBilgileri" />
+      <End Role="TumorDurumu" EntitySet="TumorDurumu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ViralEnfeksiyonlar_HastaBilgileri" Association="Self.FK_ViralEnfeksiyonlar_HastaBilgileri">
+      <End Role="HastaBilgileri" EntitySet="HastaBilgileri" />
+      <End Role="ViralEnfeksiyonlar" EntitySet="ViralEnfeksiyonlar" />
+    </AssociationSet>
+    <EntitySet Name="TumTablolar" EntityType="ProjeITModel.TumTablolar" />
+  </EntityContainer>
+  <EntityType Name="TumTablolar">
+    <Key>
+      <PropertyRef Name="Hasta_ID" />
+    </Key>
+    <Property Name="Hasta_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DogumTarihi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Cinsiyet" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Ulke" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EtnikKoken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Boy" Type="Int32" />
+    <Property Name="Kilo" Type="Int32" />
+    <Property Name="EgitimSeviyesi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Meslek1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CevreselMaruziyet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SigaraDurum" Type="Boolean" />
+    <Property Name="SigaraTip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="SigaraMiktar" Type="Int32" />
+    <Property Name="SigaraMevcutDurum" Type="Int32" />
+    <Property Name="SigaraBirakis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AlkolDurum" Type="Boolean" />
+    <Property Name="AlkolTip" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="AlkolMiktar" Type="Int32" />
+    <Property Name="AlkolMevcutDurum" Type="Int32" />
+    <Property Name="AlkolBirakis" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MaddeDurum" Type="Boolean" />
+    <Property Name="MaddeTip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MaddeMiktar" Type="Int32" />
+    <Property Name="MaddeMevcutDurum" Type="Int32" />
+    <Property Name="MaddeBirakis" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="HastalikTedavi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TaniTarihi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Durumu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ICD10Kodu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Yakinlik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tani" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TaniYili" Type="Int32" />
+    <Property Name="MenstrualDurum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SonReglTarihi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Hamilelik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Dogum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="İlac" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Doz" Type="Byte" />
+    <Property Name="Birim" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="KullanimSekli" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Siklik" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MevcutDurum" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="HIVTestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="HIVSonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HepATestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="HepASonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HepBTestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="HepBSonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HepCTestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="HepCSonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SifilizTestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SifilizSonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ToplamaTarihi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ToplamaSaati" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="AnatomikBolge" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ToplamaSekli" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OperasyonProseduru" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TaniTarihi1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="KlinikTani" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ICD10TaniKodu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="NumuneToplamaSekli" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MikroskopikAnaliz" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PatolojikTani" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TumorBolgesi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TumorBoyutu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TNM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Evre" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="TumorTipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MetastazOrgani" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="LenfNoduIslemi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="LenfNoduMetastazi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="LenfNoduLokasyon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="UzakMetastaz" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="UzakMetastazLokasyon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="TedaviTipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TedaviBaslangicBitis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TedaviSonucu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TedaviUygulamaSekli" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ERTestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ERSonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PRTestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PRSonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HER2TestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="HER2Sonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MLH1TestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MLH1Sonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PMS2TestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PMS2Sonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MSH2TestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MSH2Sonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MSH6TestDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MSH6Sonuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EkIslemler" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Notlar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Personel_ID" Type="Int32" />
+  </EntityType>
+</Schema>

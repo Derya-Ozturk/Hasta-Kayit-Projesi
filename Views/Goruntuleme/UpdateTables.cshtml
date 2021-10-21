@@ -1,0 +1,476 @@
+﻿@model OnlineCRF_ProjeIT.DAL.TumTablolar
+@{
+    ViewBag.Title = "UpdateTables";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+<br />
+<h2>UpdateTables</h2>
+
+@using (Html.BeginForm("UpdateTables", "Goruntuleme", FormMethod.Post))
+{
+    <div class="form-group" id="printableArea">
+        <h2>1.0 Hasta Bilgileri</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr><th class="col-lg-12">Genel Bilgiler</th></tr>
+                <tr>
+                    <th>Personel_ID</th>
+                    <th>Hasta_ID</th>
+                    <th>Doğum Tarihi</th>
+                    <th>Cinsiyet</th>
+                    <th>Ülke</th>
+                    <th>Etnik Köken</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Html.TextBoxFor(x => x.Personel_ID)</td>
+                    <td>@Html.TextBoxFor(x => x.Hasta_ID)</td>
+                    <td>@Html.TextBoxFor(x => x.DogumTarihi) </td>
+                    <td>@Html.TextBoxFor(x => x.Cinsiyet) </td>
+                    <td>@Html.TextBoxFor(x => x.Ulke) </td>
+                    <td>@Html.TextBoxFor(x => x.EtnikKoken) </td>
+                </tr>
+                <tr>
+                    <th>Boy</th>
+                    <th>Kilo</th>
+                </tr>
+                <tr>
+                    <td>@Html.TextBoxFor(x => x.Boy)</td>
+                    <td>@Html.TextBoxFor(x => x.Kilo)</td>
+                </tr>
+                <tr>
+                    <th>Eğitim Seviyesi</th>
+                </tr>
+                <tr>
+                    <td>@Html.TextBoxFor(x => x.EgitimSeviyesi)</td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+
+        <table class="table table-bordered">
+            <thead>
+                <tr><th class="col-lg-12">Sosyal Yaşam Özellikleri</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Meslek</td>
+                    <td>@Html.TextBoxFor(x => x.Meslek1) </td>
+                </tr>
+                <tr>
+                    <td>Çevresel Maruziyet</td>
+                    <td>@Html.TextBoxFor(x => x.CevreselMaruziyet) </td>
+                </tr>
+                <tr><th>Sigara Kullanımı</th></tr>
+                <tr>
+                    <th>Durum</th>
+                    <th>Tip</th>
+                    <th>Miktar/Gün</th>
+                    <th>Mevcut Durum</th>
+                    <th>Bırakış Tarihi</th>x
+                </tr>
+                <tr>
+                    <th><asp:CheckBox runat="server">Evet</asp:CheckBox><asp:CheckBox runat="server">Hayır</asp:CheckBox></th>
+                    <th>@Html.TextBoxFor(x => x.SigaraTip) </th>
+                    <th>@Html.TextBoxFor(x => x.SigaraMiktar) </th>
+                    <th>@Html.TextBoxFor(x => x.SigaraMevcutDurum) </th>
+                    <th>@Html.TextBoxFor(x => x.SigaraBirakis) </th>
+                </tr>
+                <tr><th>Alkol Tüketimi</th></tr>
+                <tr>
+                    <th>Durum</th>
+                    <th>Tip</th>
+                    <th>Miktar/Gün</th>
+                    <th>Mevcut Durum</th>
+                    <th>Bırakış Tarihi</th>x
+                </tr>
+                <tr>
+                    <th><asp:CheckBox runat="server">Evet</asp:CheckBox><asp:CheckBox runat="server">Hayır</asp:CheckBox></th>
+                    <th>@Html.TextBoxFor(x => x.AlkolTip) </th>
+                    <th>@Html.TextBoxFor(x => x.AlkolMiktar) </th>
+                    <th>@Html.TextBoxFor(x => x.AlkolMevcutDurum) </th>
+                    <th>@Html.TextBoxFor(x => x.AlkolBirakis) </th>
+                </tr>
+                <tr><th>Madde Kullanımı</th></tr>
+                <tr>
+                    <th>Durum</th>
+                    <th>Tip</th>
+                    <th>Miktar/Gün</th>
+                    <th>Mevcut Durum</th>
+                    <th>Bırakış Tarihi</th>x
+                </tr>
+                <tr>
+                    <th><asp:CheckBox runat="server">Evet</asp:CheckBox><asp:CheckBox runat="server">Hayır</asp:CheckBox></th>
+                    <th>@Html.TextBoxFor(x => x.MaddeTip) </th>
+                    <th>@Html.TextBoxFor(x => x.MaddeMiktar) </th>
+                    <th>@Html.TextBoxFor(x => x.MaddeMevcutDurum) </th>
+                    <th>@Html.TextBoxFor(x => x.MaddeBirakis) </th>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+
+        <table class="table table-bordered">
+            <thead>
+                <tr><th class="col-lg-12">1.3 Donör Medikal Geçmişi</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Hastalık/Tedavi/Bozukluk/Yaralanma</th>
+                    <th>Tanı Tarihi</th>
+                    <th>Durumu</th>
+                    <th>ICD-10 Kodu</th>
+                </tr>
+                <tr>
+                    <td>@Html.TextBoxFor(x => x.HastalikTedavi) </td>
+                    <td>@Html.TextBoxFor(x => x.TaniTarihi) </td>
+                    <td>@Html.TextBoxFor(x => x.Durumu) </td>
+                    <td>@Html.TextBoxFor(x => x.ICD10Kodu) </td>
+                </tr>
+        </table>
+
+        <br />
+        <table class="table table-bordered">
+            <thead>
+                <tr><th class="col-lg-12">1.4 Aile Medikal Geçmişi</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Yakınlık</th>
+                    <th>Tanı</th>
+                    <th>Tanı Yılı</th>
+                </tr>
+                <tr>
+                    <td>@Html.TextBoxFor(x => x.Yakinlik) </td>
+                    <td>@Html.TextBoxFor(x => x.Tani) </td>
+                    <td>@Html.TextBoxFor(x => x.TaniYili) </td>
+                </tr>
+        </table>
+        <br />
+
+        <table class="table table-bordered">
+            <thead>
+                <tr><th class="col-lg-12">1.5 Jinekolojik Geçmiş</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Menstrüal Durum</th>
+                    <th>Son Regl Tarihi</th>
+                    <th>Hamilelikler</th>
+                    <th>Doğumlar</th>
+                </tr>
+                <tr>
+                    <td>@Html.TextBoxFor(x => x.MenstrualDurum) </td>
+                    <td>@Html.TextBoxFor(x => x.SonReglTarihi) </td>
+                    <td>@Html.TextBoxFor(x => x.Hamilelik) </td>
+                    <td>@Html.TextBoxFor(x => x.Dogum) </td>
+                </tr>
+        </table>
+        <br />
+
+        <table class="table table-bordered">
+            <thead>
+                <tr><th class="col-lg-12">1.6 İlaçlar (Kemoterapi İlaçları Dahil)</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>İlaç</th>
+                    <th>Doz</th>
+                    <th>Birim</th>
+                    <th>Kullanım Şekli</th>
+                    <th>Sıklık</th>
+                    <th>Mevcut Durum</th>
+                </tr>
+                <tr>
+                    <td>@Html.TextBoxFor(x => x.İlac) </td>
+                    <td>@Html.TextBoxFor(x => x.Doz) </td>
+                    <td>@Html.TextBoxFor(x => x.Birim) </td>
+                    <td>@Html.TextBoxFor(x => x.KullanimSekli) </td>
+                    <td>@Html.TextBoxFor(x => x.Siklik) </td>
+                    <td>@Html.TextBoxFor(x => x.MevcutDurum) </td>
+                </tr>
+        </table>
+        <br />
+
+        <table class="table table-bordered">
+            <thead>
+                <tr><th class="col-lg-12">1.7 Viral Enfeksiyonlar</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Virüs</th>
+                    <th>Test Durumu</th>
+                    <th>Sonuc</th>
+                </tr>
+                <tr>
+                    <td>HIV 1/2</td>
+                    <td>@Html.TextBoxFor(x => x.HIVTestDurumu) </td>
+                    <td>@Html.TextBoxFor(x => x.HIVSonuc) </td>
+                </tr>
+                <tr>
+                    <td>Hepatit A</td>
+                    <td>@Html.TextBoxFor(x => x.HepATestDurumu) </td>
+                    <td>@Html.TextBoxFor(x => x.HepASonuc) </td>
+                </tr>
+                <tr>
+                    <td>Hepatit B</td>
+                    <td>@Html.TextBoxFor(x => x.HepBTestDurumu) </td>
+                    <td>@Html.TextBoxFor(x => x.HepBSonuc) </td>
+                </tr>
+                <tr>
+                    <td>Hepatit C</td>
+                    <td>@Html.TextBoxFor(x => x.HepCTestDurumu) </td>
+                    <td>@Html.TextBoxFor(x => x.HepCSonuc) </td>
+                </tr>
+                <tr>
+                    <td>Sifiliz</td>
+                    <td>@Html.TextBoxFor(x => x.SifilizTestDurumu) </td>
+                    <td>@Html.TextBoxFor(x => x.SifilizSonuc) </td>
+                </tr>
+        </table>
+        <br />
+
+        <h2>2.0 Numune Bilgisi ve Patoloji Durumu</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr><th class="col-lg-12">2.1 Numune Toplama Bilgileri</th></tr>
+                <tr>
+                    <th>Toplama Tarihi (gg/aa/yyyy) </th>
+                    <th>Toplama Saati</th>
+                    <th>Anatomik Bölge</th>
+                    <th>Toplama Şekli</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Html.TextBoxFor(x => x.ToplamaTarihi) </td>
+                    <td>@Html.TextBoxFor(x => x.ToplamaSaati) </td>
+                    <td>@Html.TextBoxFor(x => x.AnatomikBolge) </td>
+                    <td>@Html.TextBoxFor(x => x.ToplamaSekli) </td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>2.2 Operasyon Prosedürü</th>
+                </tr>
+                <tr>
+                    <td>@Html.TextBoxFor(x => x.OperasyonProseduru)</td>
+                </tr>
+            </thead>
+        </table>
+        <br />
+
+        <table class="table table-bordered">
+            <thead>
+                <tr><th class="col-lg-12">2.3 Tanı Bilgileri</th></tr>
+                <tr>
+                    <th>Tanı Tarihi (gg/aa/yyyy) </th>
+                    <th>Klinik Tanı</th>
+                    <th>ICD-10 Tanı Kodu</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Html.TextBoxFor(x => x.TaniTarihi1) </td>
+                    <td>@Html.TextBoxFor(x => x.KlinikTani) </td>
+                    <td>@Html.TextBoxFor(x => x.ICD10TaniKodu) </td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+
+        <table class="table table-bordered">
+            <thead>
+                <tr><th class="col-lg-12">2.4 Patoloji Durumu</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Numune Toplama Şekli </th>
+                </tr>
+                <tr>
+                    <td>@Html.TextBoxFor(x => x.NumuneToplamaSekli) </td>
+                </tr>
+                <tr>
+                    <th>Mikroskopik Analiz</th>
+                </tr>
+                <tr>
+                    <td>@Html.TextBoxFor(x => x.MikroskopikAnaliz) </td>
+                </tr>
+                <tr>
+                    <th>Patolojik Tanı </th>
+                </tr>
+                <tr>
+                    <td>@Html.TextBoxFor(x => x.PatolojikTani) </td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+
+        <h2>3.0 Kanser Bilgileri</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr><th class="col-lg-12">3.1 Tümör Durumu</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Tümör Bölgesi</th>
+                    <th>Tümör Boyutu</th>
+                    <th>TNM</th>
+                    <th>Evre</th>
+                    <th>Tümör Tipi</th>
+                </tr>
+                <tr>
+                    <td>@Html.TextBoxFor(x => x.TumorBolgesi) </td>
+                    <td>@Html.TextBoxFor(x => x.TumorBoyutu) </td>
+                    <td>@Html.TextBoxFor(x => x.TNM) </td>
+                    <td>@Html.TextBoxFor(x => x.Evre) </td>
+                    <td>@Html.TextBoxFor(x => x.TumorTipi) </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br />
+        <table class="table table-bordered">
+            <thead>
+                <tr><th class="col-lg-12">3.2 Metastaz Durumu </th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Metastaz Organı</th>
+                    <th>Lenf nodu işlemi var mı?</th>
+                    <th>Lenf nodunda metastaz var mı?</th>
+                    <th>Lenf nodu lokasyonu</th>
+                    <th>Uzak metastaz var mı?</th>
+                    <th>Uzak metastaz lokasyonu</th>
+                </tr>
+                <tr>
+                    <td>@Html.TextBoxFor(x => x.MetastazOrgani) </td>
+                    <td>@Html.TextBoxFor(x => x.LenfNoduIslemi) </td>
+                    <td>@Html.TextBoxFor(x => x.LenfNoduMetastazi) </td>
+                    <td>@Html.TextBoxFor(x => x.LenfNoduLokasyon) </td>
+                    <td>@Html.TextBoxFor(x => x.UzakMetastaz) </td>
+                    <td>@Html.TextBoxFor(x => x.UzakMetastazLokasyon) </td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+
+        <table class="table table-bordered">
+            <thead>
+                <tr><th class="col-lg-12">3.3 Kanser Tedavisi</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Tedavi Tipi</th>
+                    <th>Tedavi Başlangıç/Bitiş Tarihi</th>
+                    <th>Tedavi Sonucu</th>
+                    <th>Tedavi Uygulama Şekli</th>
+                </tr>
+                <tr>
+                    <td>@Html.TextBoxFor(x => x.TedaviTipi) </td>
+                    <td>@Html.TextBoxFor(x => x.TedaviBaslangicBitis) </td>
+                    <td>@Html.TextBoxFor(x => x.TedaviSonucu) </td>
+                    <td>@Html.TextBoxFor(x => x.TedaviUygulamaSekli) </td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+
+        <table class="table table-bordered">
+            <thead>
+                <tr><th class="col-lg-12">3.4 İmmünhistokimya Testi Durumu (Eğer Varsa)</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Virüs</th>
+                    <th>Test Durumu</th>
+                    <th>Sonuc</th>
+                </tr>
+                <tr>
+                    <td>ER</td>
+                    <td>@Html.TextBoxFor(x => x.ERTestDurumu) </td>
+                    <td>@Html.TextBoxFor(x => x.ERSonuc) </td>
+                </tr>
+                <tr>
+                    <td>PR</td>
+                    <td>@Html.TextBoxFor(x => x.PRTestDurumu) </td>
+                    <td>@Html.TextBoxFor(x => x.PRSonuc) </td>
+                </tr>
+                <tr>
+                    <td>HER2/neu</td>
+                    <td>@Html.TextBoxFor(x => x.HER2TestDurumu) </td>
+                    <td>@Html.TextBoxFor(x => x.HER2Sonuc) </td>
+                </tr>
+                <tr>
+                    <td>MLH1</td>
+                    <td>@Html.TextBoxFor(x => x.MLH1TestDurumu) </td>
+                    <td>@Html.TextBoxFor(x => x.MLH1Sonuc) </td>
+                </tr>
+                <tr>
+                    <td>PMS2</td>
+                    <td>@Html.TextBoxFor(x => x.PMS2TestDurumu) </td>
+                    <td>@Html.TextBoxFor(x => x.PMS2Sonuc) </td>
+                </tr>
+                <tr>
+                    <td>MSH2</td>
+                    <td>@Html.TextBoxFor(x => x.MSH2TestDurumu) </td>
+                    <td>@Html.TextBoxFor(x => x.MSH2Sonuc) </td>
+                </tr>
+                <tr>
+                    <td>MSH6</td>
+                    <td>@Html.TextBoxFor(x => x.MSH6TestDurumu) </td>
+                    <td>@Html.TextBoxFor(x => x.MSH6Sonuc) </td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+
+        <h2>4.0 Ek Bilgiler</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr><th>4.1 Ek İşlemler / Girişimler Sonucu (Kolonoskopi, Görüntülemeler, Hastalık(lar)da Mutasyon Durumları</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>@Html.TextBoxFor(x => x.EkIslemler) </th>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+
+        <table class="table table-bordered">
+            <thead>
+                <tr><th>4.2 Notlar</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Html.TextBoxFor(x => x.Notlar) </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <div style="margin-left:10px; align-items:center;">
+            <input type="submit" value="Güncelle" id="btnUpdate" class="btn btn-success" />
+        </div>
+        <div style="margin-left:10px; align-items:center;">
+            <input type="button" value="Print" id="btnPrint" class="btn btn-primary" onclick="printDiv('printableArea')" />
+        </div>
+    </div>
+    <script>
+        function printDiv(divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+        }
+    </script>
+}
